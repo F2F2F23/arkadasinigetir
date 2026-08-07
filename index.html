@@ -3,865 +3,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dünya Kupası 2026 Yarışmaları</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Arkadaşını Getir - Kalitebet</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --bg:#0d1117;
-    --bg2:#161b24;
-    --bg3:#1e2635;
-    --bg4:#252d3d;
-    --border:#2a3348;
-    --gold:#f5c518;
-    --gold2:#e6a800;
-    --green:#00d084;
-    --red:#ff4757;
-    --blue:#1e90ff;
-    --text:#e8eaf0;
-    --muted:#7a8499;
-    --white:#fff;
+    --bg-deep: #060916;
+    --bg-navy: #0c1230;
+    --card: #12183a;
+    --card-border: #232b58;
+    --gold: #f4b731;
+    --gold-soft: #ffd873;
+    --gold-dim: #b8860b;
+    --text: #eef0fb;
+    --text-dim: #9aa2c7;
+    --green: #33c17a;
+    --red: #ff5c6c;
   }
-  body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden}
-  
-  /* HERO */
-  .hero{background:linear-gradient(135deg,#0d1117 0%,#1a2340 50%,#0d1117 100%);padding:28px 20px 20px;text-align:center;position:relative;overflow:hidden;border-bottom:2px solid var(--gold)}
-  .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f5c518' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
-  .hero-badge{display:inline-block;background:var(--gold);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;letter-spacing:3px;padding:8px 20px;border-radius:2px;margin-bottom:12px;text-transform:uppercase}
-  .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,5vw,48px);font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--white);line-height:1.1}
-  .hero h1 span{color:var(--gold)}
-  .hero-sub{font-size:14px;color:var(--muted);margin-top:8px}
-  .hero-flags{font-size:24px;margin:10px 0;letter-spacing:4px}
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background: radial-gradient(ellipse at top, #101a44 0%, var(--bg-deep) 55%);
+    color: var(--text);
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    padding: 0 0 60px 0;
+  }
+  .page{
+    width:100%;
+    max-width: 480px;
+  }
 
-  /* TABS */
-  .tabs{background:var(--bg2);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;scrollbar-width:none}
-  .tabs::-webkit-scrollbar{display:none}
-  .tabs-inner{display:inline-flex;gap:0;padding:0 12px}
-  .tab{display:inline-flex;align-items:center;gap:6px;padding:14px 16px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;border:none;background:none}
-  .tab:hover{color:var(--text)}
-  .tab.active{color:var(--gold);border-bottom-color:var(--gold)}
-  .tab .tab-icon{font-size:16px}
+  /* Header bar, mimics site nav */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 20px;
+    background: #0a0f28;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .logo{
+    display:flex; align-items:center; gap:8px;
+    font-weight:800; font-size:20px; letter-spacing:0.5px;
+  }
+  .logo-icon{
+    width:30px; height:30px; border-radius:7px;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-dim));
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:900; color:#1a1204;
+  }
+  .logo span.brand{ color: var(--gold); }
+  .logo sup{ font-size:11px; color: var(--text-dim); font-weight:600; margin-left:2px;}
 
-  /* MAIN */
-  .main{max-width:800px;margin:0 auto;padding:20px 16px 40px}
+  /* Hero */
+  .hero{
+    padding: 34px 24px 26px;
+    text-align:center;
+    background: linear-gradient(180deg, #0e1436 0%, var(--bg-navy) 100%);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .hero .eyebrow{
+    color: var(--gold);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom:10px;
+  }
+  .hero h1{
+    font-size: 28px;
+    font-weight:900;
+    line-height:1.2;
+    background: linear-gradient(135deg, #fff 30%, var(--gold-soft) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin-bottom: 10px;
+  }
+  .hero p{
+    color: var(--text-dim);
+    font-size:14.5px;
+    line-height:1.5;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .hero p strong{ color: var(--gold-soft); font-weight:700; }
 
-  /* SECTION */
-  .section{display:none}
-  .section.active{display:block}
+  /* Form card */
+  .form-wrap{ padding: 26px 20px 0; }
+  .card{
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 26px 22px 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+  .card h2{
+    font-size:16px;
+    font-weight:800;
+    margin-bottom: 4px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .card h2 .dot{
+    width:8px; height:8px; border-radius:50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+  }
+  .card .sub{
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
 
-  /* CARD */
-  .card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px}
-  .card-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
-  .card-icon{width:36px;height:36px;border-radius:6px;background:rgba(245,197,24,.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-  .card-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.5px;color:var(--white)}
-  .card-desc{font-size:12px;color:var(--muted);margin-top:2px}
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block;
+    font-size: 12.5px;
+    font-weight:700;
+    color: var(--text-dim);
+    margin-bottom: 7px;
+    letter-spacing: 0.3px;
+  }
+  .field input{
+    width:100%;
+    background: #0a0f2a;
+    border: 1.5px solid var(--card-border);
+    border-radius: 10px;
+    padding: 13px 14px;
+    color: var(--text);
+    font-size: 15px;
+    outline:none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .field input::placeholder{ color: #565f8f; }
+  .field input:focus{
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(244,183,49,0.15);
+  }
+  .field.error input{ border-color: var(--red); }
+  .field .err-msg{
+    display:none;
+    color: var(--red);
+    font-size:12px;
+    margin-top:6px;
+  }
+  .field.error .err-msg{ display:block; }
 
-  /* PRIZE BADGE */
-  .prize-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.3);color:var(--gold);font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+  .submit-btn{
+    width:100%;
+    margin-top: 6px;
+    padding: 15px;
+    border:none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-dim));
+    color: #1a1204;
+    font-size: 15.5px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    cursor:pointer;
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    box-shadow: 0 8px 24px rgba(244,183,49,0.25);
+  }
+  .submit-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 28px rgba(244,183,49,0.35); }
+  .submit-btn:active{ transform: translateY(0); }
+  .submit-btn:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
 
-  /* INPUT */
-  .form-group{margin-bottom:14px}
-  .form-label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-  .form-input{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;padding:10px 12px;border-radius:6px;outline:none;transition:border-color .2s}
-  .form-input:focus{border-color:var(--gold)}
-  .form-input::placeholder{color:var(--muted)}
+  .status{
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight:600;
+    display:none;
+    align-items:flex-start;
+    gap:8px;
+    line-height:1.45;
+  }
+  .status.show{ display:flex; }
+  .status.success{ background: rgba(51,193,122,0.12); border:1px solid rgba(51,193,122,0.4); color: var(--green); }
+  .status.fail{ background: rgba(255,92,108,0.12); border:1px solid rgba(255,92,108,0.4); color: var(--red); }
 
-  /* OPTION GRID */
-  .options-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:6px}
-  .opt{background:var(--bg3);border:1.5px solid var(--border);border-radius:6px;padding:10px 8px;cursor:pointer;text-align:center;transition:all .2s;font-size:13px;font-weight:500;color:var(--text);position:relative}
-  .opt:hover{border-color:var(--gold);color:var(--gold)}
-  .opt.selected{background:rgba(245,197,24,.12);border-color:var(--gold);color:var(--gold)}
-  .opt.selected::after{content:'✓';position:absolute;top:4px;right:6px;font-size:11px;color:var(--gold)}
-  .opt-flag{font-size:20px;display:block;margin-bottom:4px}
-  .opt-name{font-size:12px}
+  .terms{
+    padding: 22px 20px 0;
+  }
+  .terms details{
+    background: var(--card);
+    border:1px solid var(--card-border);
+    border-radius: 14px;
+    overflow:hidden;
+  }
+  .terms summary{
+    list-style:none;
+    padding: 15px 18px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color: var(--text);
+  }
+  .terms summary::-webkit-details-marker{ display:none; }
+  .terms summary::after{
+    content:'▾';
+    color: var(--gold);
+    font-size:14px;
+    transition: transform .15s ease;
+  }
+  .terms details[open] summary::after{ transform: rotate(180deg); }
+  .terms .terms-body{
+    padding: 0 18px 18px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height:1.6;
+  }
+  .terms .terms-body ul{ padding-left: 18px; margin-top:6px; }
+  .terms .terms-body li{ margin-bottom:5px; }
 
-  /* WIDE OPTIONS */
-  .options-wide{display:flex;flex-direction:column;gap:6px;margin-top:6px}
-  .opt-wide{background:var(--bg3);border:1.5px solid var(--border);border-radius:6px;padding:10px 14px;cursor:pointer;transition:all .2s;font-size:13px;font-weight:500;color:var(--text);display:flex;align-items:center;gap:10px}
-  .opt-wide:hover{border-color:var(--gold);color:var(--gold)}
-  .opt-wide.selected{background:rgba(245,197,24,.12);border-color:var(--gold);color:var(--gold)}
-  .opt-wide .chk{width:18px;height:18px;border-radius:4px;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .2s}
-  .opt-wide.selected .chk{background:var(--gold);border-color:var(--gold);color:#000}
-
-  /* NUMBER INPUT */
-  .number-row{display:flex;align-items:center;gap:10px}
-  .num-btn{width:36px;height:36px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-size:18px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
-  .num-btn:hover{border-color:var(--gold);color:var(--gold)}
-  .num-display{flex:1;text-align:center;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:8px;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--gold)}
-
-  /* SUBMIT */
-  .submit-btn{width:100%;padding:14px;background:var(--gold);color:#000;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:2px;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:all .2s;margin-top:18px}
-  .submit-btn:hover{background:var(--gold2);transform:translateY(-1px)}
-  .submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-
-  /* SUCCESS */
-  .success-box{background:rgba(0,208,132,.08);border:1px solid rgba(0,208,132,.3);border-radius:8px;padding:18px;text-align:center;display:none}
-  .success-box.show{display:block}
-  .success-icon{font-size:36px;margin-bottom:8px}
-  .success-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px}
-  .success-text{font-size:13px;color:var(--muted);margin-top:6px}
-
-  /* ERROR */
-  .error-box{background:rgba(255,71,87,.08);border:1px solid rgba(255,71,87,.3);border-radius:6px;padding:12px 14px;font-size:13px;color:var(--red);display:none;margin-top:10px}
-  .error-box.show{display:block}
-
-  /* LEADERBOARD preview */
-  .lb-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg3);border-radius:6px;margin-bottom:6px;font-size:13px}
-  .lb-rank{width:24px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--muted);text-align:center}
-  .lb-rank.gold{color:var(--gold)}
-  .lb-name{flex:1;font-weight:500}
-  .lb-pts{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--gold)}
-
-  /* LOADING */
-  .loading{display:none;text-align:center;padding:20px;color:var(--muted);font-size:13px}
-  .loading.show{display:block}
-  .spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle}
-  @keyframes spin{to{transform:rotate(360deg)}}
-
-  /* PROGRESS */
-  .progress-bar{background:var(--bg3);border-radius:4px;height:4px;margin:16px 0 6px;overflow:hidden}
-  .progress-fill{height:100%;background:var(--gold);border-radius:4px;transition:width .4s ease}
-  .progress-text{font-size:11px;color:var(--muted);text-align:right}
-
-  /* DIVIDER */
-  .divider{height:1px;background:var(--border);margin:16px 0}
-
-  /* INFO ROW */
-  .info-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-  .info-chip{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:6px 10px;font-size:12px;color:var(--muted)}
-  .info-chip strong{color:var(--text)}
-
-  /* ONAY MODALI */
-  .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.75);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
-  .modal-overlay.show{opacity:1;pointer-events:all}
-  .modal{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px 24px;max-width:420px;width:100%;transform:translateY(20px);transition:transform .2s}
-  .modal-overlay.show .modal{transform:translateY(0)}
-  .modal-icon{font-size:40px;text-align:center;margin-bottom:12px}
-  .modal-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--white);text-align:center;margin-bottom:8px}
-  .modal-desc{font-size:13px;color:var(--muted);text-align:center;line-height:1.7;margin-bottom:6px}
-  .modal-secim{background:var(--bg3);border-radius:6px;padding:10px 14px;margin:14px 0;font-size:13px;color:var(--text);text-align:center;border-left:3px solid var(--gold)}
-  .modal-uyari{font-size:12px;color:var(--red);text-align:center;margin-bottom:18px}
-  .modal-buttons{display:flex;gap:10px}
-  .modal-btn-confirm{flex:1;padding:12px;background:var(--gold);color:#000;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:all .2s}
-  .modal-btn-confirm:hover{background:var(--gold2)}
-  .modal-btn-cancel{flex:1;padding:12px;background:var(--bg3);color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .2s}
-  .modal-btn-cancel:hover{color:var(--text);border-color:var(--text)}
-
-  @media(max-width:480px){
-    .options-grid{grid-template-columns:repeat(3,1fr)}
-    .hero h1{font-size:26px}
+  .footer-note{
+    text-align:center;
+    color: #4b5384;
+    font-size: 11.5px;
+    padding: 26px 20px 0;
+    line-height:1.6;
   }
 </style>
 </head>
 <body>
+<div class="page">
 
-<!-- ONAY MODALI -->
-<div class="modal-overlay" id="onay-modal">
-  <div class="modal">
-    <div class="modal-icon">⚠️</div>
-    <div class="modal-title">Seçiminizi Onaylıyor musunuz?</div>
-    <div class="modal-desc">Aşağıdaki seçimi göndermek üzeresiniz:</div>
-    <div class="modal-secim" id="modal-secim-text"></div>
-    <div class="modal-uyari">⚡ Her yarışmaya yalnızca 1 kez katılabilirsiniz. Bu işlem geri alınamaz!</div>
-    <div class="modal-buttons">
-      <button class="modal-btn-cancel" onclick="modalKapat()">Geri Dön</button>
-      <button class="modal-btn-confirm" onclick="modalOnayla()">Evet, Gönder ✓</button>
-    </div>
-  </div>
-</div>
-
-<div class="hero">
-  <div class="hero-badge">KALİTEBET ÖZEL ÜYE YARIŞMASI</div>
-  <h1>FIFA Dünya Kupası <span>2026</span></h1>
-  <p class="hero-sub">Tahminlerini yap, liderlik tablosuna gir, büyük ödülleri kap!</p>
-</div>
-
-<div class="tabs">
-  <div class="tabs-inner">
-    <button class="tab active" onclick="showTab('kurallar')" data-tab="kurallar">📋 Kurallar</button>
-    <button class="tab" onclick="showTab('skor')" data-tab="skor">🇹🇷 Türkiye Skor</button>
-    <button class="tab" onclick="showTab('gruplar')" data-tab="gruplar">📊 Grup Liderleri</button>
-    <button class="tab" onclick="showTab('ana')" data-tab="ana">🏆 Şampiyon</button>
-    <button class="tab" onclick="showTab('gol')" data-tab="gol">⚽ Gol Kralı</button>
-    <button class="tab" onclick="showTab('oduller')" data-tab="oduller">🎁 Ödüller</button>
-    <button class="tab" onclick="showTab('tahminlerim')" data-tab="tahminlerim">🔍 Tahminlerim</button>
-  </div>
-</div>
-
-<div class="main">
-
-  <!-- KULLANICI ADI (global) -->
-  <div class="card" id="user-card">
-    <div class="card-header">
-      <div class="card-icon">👤</div>
-      <div>
-        <div class="card-title">Kullanıcı Bilgisi</div>
-        <div class="card-desc">Tüm yarışmalarda geçerli olacak</div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Üye Kullanıcı Adın</label>
-      <input type="text" class="form-input" id="global-username" placeholder="kullanıcı adını gir..." oninput="syncUsername()">
-    </div>
-    <div class="error-box" id="username-error">Lütfen kullanıcı adını gir!</div>
-    <div style="background:rgba(245,197,24,.07);border:1px solid rgba(245,197,24,.25);border-radius:6px;padding:12px 14px;margin-top:12px;display:flex;gap:10px;align-items:flex-start">
-      <div style="font-size:20px;line-height:1">⚠️</div>
-      <div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Önemli Hatırlatma</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6">Her yarışmaya <strong style="color:var(--text)">yalnızca 1 kez</strong> katılabilirsiniz. Gönderilen tahminler <strong style="color:var(--text)">değiştirilemez</strong>. Lütfen seçimlerinizi dikkatlice yapın ve iyi düşünerek karar verin. Başarılar! 🍀</div>
-      </div>
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-icon">KB</div>
+      <div>Kalite<span class="brand">Bet</span><sup>9</sup></div>
     </div>
   </div>
 
-  <!-- TAB: ŞAMPIYON -->
-  <div class="section" id="tab-ana">
+  <div class="hero">
+    <div class="eyebrow">Arkadaşını Getir, Bonusunu Götür</div>
+    <h1>Getirdiğin arkadaşını<br>buradan bildir</h1>
+    <p>Kullanıcı adını ve getirdiğin arkadaşının bilgilerini gir, <strong>bonusun ekibimiz tarafından incelenip hesabına tanımlansın.</strong></p>
+  </div>
+
+  <div class="form-wrap">
     <div class="card">
-      <div class="card-header">
-        <div class="card-icon">🏆</div>
-        <div>
-          <div class="card-title">Turnuvayı Kim Kazanır?</div>
-          <div class="card-desc">2026 FIFA Dünya Kupası şampiyonunu seç</div>
+      <h2><span class="dot"></span>Referans Bilgileri</h2>
+      <div class="sub">Tüm alanlar zorunludur.</div>
+
+      <form id="referralForm" novalidate>
+        <div class="field" id="field-me">
+          <label for="myUsername">Kullanıcı Adım</label>
+          <input type="text" id="myUsername" name="myUsername" placeholder="Kalitebet kullanıcı adınız" autocomplete="off">
+          <div class="err-msg">Lütfen kullanıcı adınızı girin.</div>
         </div>
-      </div>
-      <div class="prize-badge">🎁 Büyük Ödül — Şampiyon Tahmini</div>
-      <div class="form-group">
-        <label class="form-label">Şampiyon Takım</label>
-        <div class="options-grid" id="champion-grid">
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Türkiye">Türkiye</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Brezilya">Brezilya</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Arjantin">Arjantin</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Fransa">Fransa</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="İngiltere">İngiltere</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Almanya">Almanya</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="İspanya">İspanya</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Portekiz">Portekiz</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Hollanda">Hollanda</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Belçika">Belçika</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Uruguay">Uruguay</div>
-          <div class="opt" onclick="selectOpt(this,'champion')" data-val="Diğer">Diğer</div>
+
+        <div class="field" id="field-friend-name">
+          <label for="friendName">Arkadaşımın Adı</label>
+          <input type="text" id="friendName" name="friendName" placeholder="Arkadaşınızın adı soyadı" autocomplete="off">
+          <div class="err-msg">Lütfen arkadaşınızın adını girin.</div>
         </div>
-      </div>
-      <div class="divider"></div>
-      <div class="form-group">
-        <label class="form-label">Final Skoru Tahmini (Opsiyonel)</label>
-        <input type="text" class="form-input" id="final-score" placeholder="örn: 2-1">
-      </div>
-      <button class="submit-btn" onclick="submitForm('ana')">Tahminimi Kaydet 🏆</button>
-      <div class="loading" id="loading-ana"><span class="spinner"></span> Drive'a kaydediliyor...</div>
-      <div class="success-box" id="success-ana">
-        <div class="success-icon">✅</div>
-        <div class="success-title">Tahmin Kaydedildi!</div>
-        <div class="success-text">Şampiyon tahminin başarıyla kaydedildi.</div>
-      </div>
-      <div class="error-box" id="error-ana"></div>
+
+        <div class="field" id="field-friend-username">
+          <label for="friendUsername">Arkadaşımın Kullanıcı Adı</label>
+          <input type="text" id="friendUsername" name="friendUsername" placeholder="Arkadaşınızın Kalitebet kullanıcı adı" autocomplete="off">
+          <div class="err-msg">Lütfen arkadaşınızın kullanıcı adını girin.</div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">GÖNDER</button>
+
+        <div class="status" id="statusBox"></div>
+      </form>
     </div>
   </div>
 
-  <!-- TAB: GRUP LİDERLERİ -->
-  <div class="section" id="tab-gruplar">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon">📊</div>
-        <div>
-          <div class="card-title">Grup Liderleri Yarışması</div>
-          <div class="card-desc">Her gruptan lider olacak takımı seç</div>
-        </div>
-      </div>
-      <div id="grup-fields"></div>
-      <button class="submit-btn" onclick="submitForm('gruplar')">Tahminlerimi Kaydet 📊</button>
-      <div class="loading" id="loading-gruplar"><span class="spinner"></span> Drive'a kaydediliyor...</div>
-      <div class="success-box" id="success-gruplar">
-        <div class="success-icon">✅</div>
-        <div class="success-title">Kaydedildi!</div>
-        <div class="success-text">Grup liderlik tahminlerin kaydedildi.</div>
-      </div>
-      <div class="error-box" id="error-gruplar"></div>
-    </div>
-  </div>
-
-  <!-- TAB: GOL KRALI -->
-  <div class="section" id="tab-gol">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon">⚽</div>
-        <div>
-          <div class="card-title">Gol Kralı Yarışması</div>
-          <div class="card-desc">En fazla gol atacak oyuncuyu tahmin et</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Gol Kralı Adayını Seç</label>
-        <div class="options-wide" id="golkrali-liste">
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Kylian Mbappé (Fransa)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Harry Kane (İngiltere)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Lionel Messi (Arjantin)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Mikel Oyarzabal (İspanya)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Erling Haaland (Norveç)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Lamine Yamal (İspanya)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Cristiano Ronaldo (Portekiz)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Ousmane Dembele (Fransa)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Vinicius Jr. (Brezilya)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Julian Alvarez (Arjantin)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Lautaro Martinez (Arjantin)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Raphinha (Brezilya)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Bukayo Saka (İngiltere)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Nick Woltemade (Almanya)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Romelu Lukaku (Belçika)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Luis Suarez (Kolombiya)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Igor Thiago (Brezilya)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Ollie Watkins (İngiltere)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Kai Havertz (Almanya)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)"><div class="chk"></div><span>Jude Bellingham (İngiltere)</span></div>
-          <div class="opt-wide" onclick="selectGolKrali(this)" id="golkrali-diger-opt"><div class="chk"></div><span>Diğer (Manuel Giriş)</span></div>
-        </div>
-        <!-- Diğer input - başta gizli -->
-        <div id="golkrali-diger-alan" style="display:none;margin-top:10px">
-          <input type="text" class="form-input" id="gol-other" placeholder="Oyuncu adı ve takımı gir... (örn: Ali Yılmaz - Türkiye)" oninput="golDigerYazildi()">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Kaç Gol Atacak? (Tahmini)</label>
-        <div class="number-row">
-          <button class="num-btn" onclick="changeNum('gol-sayi',-1)">−</button>
-          <div class="num-display" id="gol-sayi">6</div>
-          <button class="num-btn" onclick="changeNum('gol-sayi',1)">+</button>
-        </div>
-      </div>
-      <button class="submit-btn" onclick="submitForm('gol')">Tahminimi Kaydet ⚽</button>
-      <div class="loading" id="loading-gol"><span class="spinner"></span> Drive'a kaydediliyor...</div>
-      <div class="success-box" id="success-gol">
-        <div class="success-icon">✅</div>
-        <div class="success-title">Kaydedildi!</div>
-        <div class="success-text">Gol kralı tahminin kaydedildi.</div>
-      </div>
-      <div class="error-box" id="error-gol"></div>
-    </div>
-  </div>
-
-
-</div>
-
-  <!-- TAB: TÜRKİYE SKOR -->
-  <div class="section" id="tab-skor">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon">🇹🇷</div>
-        <div>
-          <div class="card-title">Türkiye Skor Yarışması</div>
-          <div class="card-desc">Maç skorunu tahmin et</div>
-        </div>
-      </div>
-
-      <!-- MAÇ 1 -->
-      <div style="background:var(--bg3);border-radius:8px;padding:16px;margin-bottom:16px">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-          <div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--white)">Grup D</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:2px">26 Haziran 2026 · Los Angeles</div>
-          </div>
-          <div style="background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.2);border-radius:4px;padding:4px 10px;font-size:11px;font-weight:600;color:var(--gold)">GRUP D</div>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:12px">
-          <div style="text-align:center;flex:1">
-            <div style="font-size:13px;font-weight:600;color:var(--gold);margin-bottom:8px">TÜRKİYE</div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:6px">
-              <button class="num-btn" onclick="changeScore('m1-home',-1)">−</button>
-              <div class="num-display" id="m1-home" style="min-width:56px">0</div>
-              <button class="num-btn" onclick="changeScore('m1-home',1)">+</button>
-            </div>
-          </div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--muted);padding:0 4px">-</div>
-          <div style="text-align:center;flex:1">
-            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px">ABD</div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:6px">
-              <button class="num-btn" onclick="changeScore('m1-away',-1)">−</button>
-              <div class="num-display" id="m1-away" style="min-width:56px">0</div>
-              <button class="num-btn" onclick="changeScore('m1-away',1)">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button class="submit-btn" onclick="submitForm('skor')">Tahminlerimi Kaydet 🇹🇷</button>
-      <div class="loading" id="loading-skor"><span class="spinner"></span> Drive'a kaydediliyor...</div>
-      <div class="success-box" id="success-skor">
-        <div class="success-icon">✅</div>
-        <div class="success-title">Kaydedildi!</div>
-        <div class="success-text">Türkiye skor tahminlerin kaydedildi.</div>
-      </div>
-      <div class="error-box" id="error-skor"></div>
-    </div>
-  </div>
-
-  <!-- TAB: ÖDÜLLER -->
-  <div class="section" id="tab-oduller">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon">🎁</div>
-        <div>
-          <div class="card-title">Ödüller</div>
-          <div class="card-desc">Her yarışma için kazanma koşulları ve ödüller</div>
-        </div>
-      </div>
-
-      <!-- ÖZET TABLO -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:20px">
-        <div style="background:var(--bg3);border:1px solid rgba(245,197,24,.2);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:28px;margin-bottom:6px">🏆</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Şampiyon</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--gold)">1.000 ₺</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:4px">Doğru tahmin yapana</div>
-        </div>
-        <div style="background:var(--bg3);border:1px solid rgba(245,197,24,.2);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:28px;margin-bottom:6px">📊</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Grup Liderleri</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--gold)">2.000 ₺</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:4px">12'de 12 yapana</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--gold);margin-top:6px">1.000 ₺</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:4px">12'de 11 yapana</div>
-        </div>
-        <div style="background:var(--bg3);border:1px solid rgba(245,197,24,.2);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:28px;margin-bottom:6px">⚽</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Gol Kralı</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--gold)">2.000 ₺</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:4px">Doğru tahmin yapana</div>
-        </div>
-        <div style="background:var(--bg3);border:1px solid rgba(245,197,24,.2);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:28px;margin-bottom:6px">🇹🇷</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Türkiye Skor</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--gold)">1.000 ₺</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:4px">Doğru skoru bilene</div>
-        </div>
-      </div>
-
-      <!-- ÖDÜL TAKVİMİ -->
-      <div style="background:var(--bg3);border-radius:8px;padding:18px">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--white);margin-bottom:14px">📅 Ödül Takvimi</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--bg2);border-radius:6px">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--gold);min-width:90px">26 Haz sonrası</div>
-            <div style="font-size:13px;color:var(--text)">🇹🇷 Türkiye - ABD skor ödülleri yüklenir</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--bg2);border-radius:6px">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--gold);min-width:90px">29 Haziran</div>
-            <div style="font-size:13px;color:var(--text)">📊 Grup Liderleri ödülleri yüklenir</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--bg2);border-radius:6px">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--gold);min-width:90px">20 Temmuz</div>
-            <div style="font-size:13px;color:var(--text)">🏆 Şampiyon & ⚽ Gol Kralı ödülleri yüklenir</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- TAB: KURALLAR -->
-  <div class="section active" id="tab-kurallar">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon">📋</div>
-        <div>
-          <div class="card-title">Yarışma Kuralları</div>
-          <div class="card-desc">Lütfen katılmadan önce dikkatlice okuyunuz</div>
-        </div>
-      </div>
-
-      <!-- ŞAMPIYON -->
-      <div style="background:var(--bg3);border-radius:8px;padding:18px;margin-bottom:12px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)">
-          <div style="font-size:22px">🏆</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gold)">Turnuva Şampiyonu</div>
-        </div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Turnuva boyunca toplam <strong>20.000 TL yatırım</strong> yapan üyeler katılabilir.</span></li>
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Son tahmin tarihi: <strong style="color:var(--gold)">25 Haziran 2026</strong></span></li>
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Ödüller turnuva sona erdikten sonra <strong style="color:var(--gold)">20 Temmuz 2026</strong> tarihinde doğru tahmin yapan tüm üyelere yüklenecektir.</span></li>
-          <li><div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(0,208,132,.15),rgba(0,208,132,.05));border:1px solid rgba(0,208,132,.4);border-radius:8px;padding:12px 16px;margin-top:4px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:18px">🎁</span><span style="font-size:13px;color:var(--text)">Doğru tahmin yapan <strong>her üyeye</strong></span></div><div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--green);white-space:nowrap">1.000 ₺</div></div></li>
+  <div class="terms">
+    <details>
+      <summary>Promosyon Şartları ve Detayları</summary>
+      <div class="terms-body">
+        <ul>
+          <li>Bildirdiğiniz arkadaşınızın gerçek ve aktif bir üye olması gerekmektedir.</li>
+          <li>Bonus, ekibimiz tarafından bilgiler doğrulandıktan sonra hesabınıza tanımlanır.</li>
+          <li>Aynı üye birden fazla arkadaşını bildirebilir.</li>
+          <li>Yanlış veya hatalı bilgi girilmesi durumunda bonus tanımlanmayabilir.</li>
         </ul>
       </div>
-
-      <!-- GRUP LİDERLERİ -->
-      <div style="background:var(--bg3);border-radius:8px;padding:18px;margin-bottom:12px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)">
-          <div style="font-size:22px">📊</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gold)">Grup Liderleri</div>
-        </div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Turnuva boyunca toplam <strong>30.000 TL, 1.4 oran ve üzeri spor çevrimi</strong> yapan üyeler katılabilir. <span style="color:var(--muted)">(Cashout'lar dahil değildir.)</span></span></li>
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Son tahmin tarihi: <strong style="color:var(--gold)">17 Haziran 2026</strong></span></li>
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Grup aşaması tamamlandıktan sonra <strong style="color:var(--gold)">29 Haziran 2026</strong> tarihinde ödüller yüklenecektir.</span></li>
-          <li><div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(0,208,132,.15),rgba(0,208,132,.05));border:1px solid rgba(0,208,132,.4);border-radius:8px;padding:12px 16px;margin-top:4px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:18px">🎁</span><span style="font-size:13px;color:var(--text)"><strong>12'de 12</strong> yapan her üyeye</span></div><div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--green);white-space:nowrap">2.000 ₺</div></div></li>
-          <li><div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(0,208,132,.1),rgba(0,208,132,.03));border:1px solid rgba(0,208,132,.3);border-radius:8px;padding:12px 16px;margin-top:2px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:18px">🎁</span><span style="font-size:13px;color:var(--text)"><strong>12'de 11</strong> yapan her üyeye</span></div><div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--green);white-space:nowrap">1.000 ₺</div></div></li>
-        </ul>
-      </div>
-
-      <!-- GOL KRALI -->
-      <div style="background:var(--bg3);border-radius:8px;padding:18px;margin-bottom:12px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)">
-          <div style="font-size:22px">⚽</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gold)">Gol Kralı</div>
-        </div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Turnuva boyunca <strong>en az 10 adet, her biri minimum 1.000 TL</strong> yatırımı olan üyeler katılabilir.</span></li>
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Son tahmin tarihi: <strong style="color:var(--gold)">20 Haziran 2026</strong></span></li>
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Ödüller turnuva sona erdikten sonra <strong style="color:var(--gold)">20 Temmuz 2026</strong> tarihinde doğru tahmin yapan tüm üyelere yüklenecektir.</span></li>
-          <li><div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(0,208,132,.15),rgba(0,208,132,.05));border:1px solid rgba(0,208,132,.4);border-radius:8px;padding:12px 16px;margin-top:4px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:18px">🎁</span><span style="font-size:13px;color:var(--text)">Doğru tahmin yapan <strong>her üyeye</strong></span></div><div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--green);white-space:nowrap">2.000 ₺</div></div></li>
-        </ul>
-      </div>
-
-      <!-- TÜRKİYE SKOR -->
-      <div style="background:var(--bg3);border-radius:8px;padding:18px;margin-bottom:4px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)">
-          <div style="font-size:22px">🇹🇷</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gold)">Türkiye Skor Tahmini</div>
-        </div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Türkiye'nin maçının oynandığı <strong>24 saat içinde 2.500 TL yatırım</strong> yapan üyeler katılabilir.</span></li>
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Tahminler <strong>her maç başlamadan önce</strong> doldurulabilir.</span></li>
-          <li style="display:flex;gap:10px;font-size:13px;color:var(--text);line-height:1.6"><span style="color:var(--gold);font-weight:700;flex-shrink:0">•</span><span>Ödüller <strong>her maçın ardından aynı gün içinde</strong> kazananlara yüklenecektir.</span></li>
-          <li><div style="display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(0,208,132,.15),rgba(0,208,132,.05));border:1px solid rgba(0,208,132,.4);border-radius:8px;padding:12px 16px;margin-top:4px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:18px">🎁</span><span style="font-size:13px;color:var(--text)">Doğru skoru bilen <strong>her üyeye</strong></span></div><div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--green);white-space:nowrap">1.000 ₺</div></div></li>
-        </ul>
-      </div>
-
-    </div>
+    </details>
   </div>
 
-  <!-- TAB: TAHMİNLERİM -->
-  <div class="section" id="tab-tahminlerim">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon">🔍</div>
-        <div>
-          <div class="card-title">Tahminlerimi Gör</div>
-          <div class="card-desc">Yarışmalardaki seçimlerini sorgula</div>
-        </div>
-      </div>
-      <button class="submit-btn" onclick="sorgulaKullanici()" style="margin-top:0">Tahminlerimi Göster 🔍</button>
-      <div class="loading" id="loading-sorgu"><span class="spinner"></span> Tahminler aranıyor...</div>
-      <div id="sorgu-sonuc"></div>
-    </div>
-  </div>
+  <div class="footer-note">© Kalitebet — Arkadaşını Getir Bonusu</div>
 
 </div>
 
 <script>
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0deYrVwDyNIpog-dZ1If1AlINpTOcpXkFzp7DsVVrvGlsf1I73FhnHRJCAwasr6X8/exec';
+  // ---- CONFIGURATION ----
+  // Google Apps Script Web App URL buraya yapıştırılacak.
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjRlTOwBkPCWEMA7EGQHjsGE39vj3qZ_44LK_h6PnIXD_OfSBcKhv3YTiUOpjWTNy3/exec";
 
-const selections = {
-  champion: null,
-  golkrali: null,
-  kaleci: null,
-  surpriz: null,
-  tur: null,
-  finalist: [],
-  gruplar: {}
-};
+  const form = document.getElementById('referralForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const statusBox = document.getElementById('statusBox');
 
-const scoreValues = {
-  'm1-away': 0, 'm1-home': 0,
-  'm2-home': 0, 'm2-away': 0,
-  'm3-home': 0, 'm3-away': 0
-};
-
-function changeScore(id, delta) {
-  scoreValues[id] = Math.max(0, (scoreValues[id] || 0) + delta);
-  document.getElementById(id).textContent = scoreValues[id];
-}
-
-
-const numValues = {
-  'gol-sayi': 6
-};
-
-function showTab(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  document.querySelector(`[data-tab="${id}"]`).classList.add('active');
-}
-
-function syncUsername() {}
-
-function selectOpt(el, key) {
-  const grid = el.closest('[id]');
-  el.closest('.options-grid, .options-wide').querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  selections[key] = el.dataset.val;
-}
-
-function selectGolKrali(el) {
-  // Tüm seçimleri kaldır
-  document.querySelectorAll('#golkrali-liste .opt-wide').forEach(o => {
-    o.classList.remove('selected');
-    o.querySelector('.chk').textContent = '';
-  });
-
-  // Diğer seçeneği mi?
-  if (el.id === 'golkrali-diger-opt') {
-    el.classList.add('selected');
-    el.querySelector('.chk').textContent = '✓';
-    document.getElementById('golkrali-diger-alan').style.display = 'block';
-    document.getElementById('gol-other').focus();
-    selections.golkrali = null; // listeden seçim yok
-  } else {
-    // Normal seçim
-    el.classList.add('selected');
-    el.querySelector('.chk').textContent = '✓';
-    document.getElementById('golkrali-diger-alan').style.display = 'none';
-    document.getElementById('gol-other').value = '';
-    selections.golkrali = el.querySelector('span').textContent.trim();
+  function clearErrors(){
+    document.querySelectorAll('.field').forEach(f => f.classList.remove('error'));
   }
-}
 
-function golDigerYazildi() {
-  // Manuel yazılınca listeki seçimi sıfırla
-  selections.golkrali = null;
-}
+  function showStatus(type, msg){
+    statusBox.className = 'status show ' + type;
+    statusBox.innerHTML = msg;
+  }
 
-
-function selectWide(el, key) {
-  el.closest('.options-wide').querySelectorAll('.opt-wide').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  el.querySelector('.chk').textContent = '✓';
-  el.closest('.options-wide').querySelectorAll('.opt-wide:not(.selected) .chk').forEach(c => c.textContent = '');
-  selections[key] = el.querySelector('span:last-child').textContent.trim();
-}
-
-function selectMultiOpt(el, key) {
-  const val = el.dataset.val;
-  if (el.classList.contains('selected')) {
-    el.classList.remove('selected');
-    selections[key] = selections[key].filter(v => v !== val);
-  } else {
-    if (selections[key].length >= 2) {
-      el.closest('.options-grid').querySelectorAll('.opt.selected')[0].classList.remove('selected');
-      selections[key].shift();
+  function validate(data){
+    let valid = true;
+    if(!data.myUsername){
+      document.getElementById('field-me').classList.add('error');
+      valid = false;
     }
-    el.classList.add('selected');
-    selections[key].push(val);
-  }
-}
-
-function changeNum(id, delta) {
-  numValues[id] = Math.max(0, (numValues[id] || 0) + delta);
-  document.getElementById(id).textContent = numValues[id];
-}
-
-function getUsername() {
-  return document.getElementById('global-username').value.trim();
-}
-
-function showError(id, msg) {
-  const el = document.getElementById('error-' + id);
-  el.textContent = msg;
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 4000);
-}
-
-function getGrupData() {
-  const result = {};
-  document.querySelectorAll('.grup-select').forEach(sel => {
-    result[sel.dataset.grup] = sel.value;
-  });
-  return result;
-}
-
-let pendingSubmit = null;
-
-function modalAc(secimText, onayCallback) {
-  document.getElementById('modal-secim-text').innerHTML = secimText;
-  document.getElementById('onay-modal').classList.add('show');
-  pendingSubmit = onayCallback;
-}
-
-function modalKapat() {
-  document.getElementById('onay-modal').classList.remove('show');
-  pendingSubmit = null;
-}
-
-function modalOnayla() {
-  document.getElementById('onay-modal').classList.remove('show');
-  if (pendingSubmit) pendingSubmit();
-  pendingSubmit = null;
-}
-
-async function submitForm(type) {
-  const username = getUsername();
-  if (!username) {
-    document.getElementById('username-error').classList.add('show');
-    setTimeout(() => document.getElementById('username-error').classList.remove('show'), 3000);
-    document.getElementById('global-username').focus();
-    return;
+    if(!data.friendName){
+      document.getElementById('field-friend-name').classList.add('error');
+      valid = false;
+    }
+    if(!data.friendUsername){
+      document.getElementById('field-friend-username').classList.add('error');
+      valid = false;
+    }
+    return valid;
   }
 
-  let rowData = {};
-  const ts = new Date().toLocaleString('tr-TR');
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    clearErrors();
+    statusBox.className = 'status';
 
-  if (type === 'ana') {
-    if (!selections.champion) { showError('ana', 'Lütfen bir takım seç!'); return; }
-    rowData = { Zaman: ts, Kullanıcı: username, Kategori: 'Şampiyon', Seçim: selections.champion, Detay: document.getElementById('final-score').value || '-' };
-  } else if (type === 'gruplar') {
-    const grup = getGrupData();
-    const values = Object.values(grup).filter(v => v);
-    if (values.length < 3) { showError('gruplar', 'En az 3 grup için seçim yap!'); return; }
-    rowData = { Zaman: ts, Kullanıcı: username, Kategori: 'Grup Liderleri', Seçim: JSON.stringify(grup), Detay: '-' };
-  } else if (type === 'gol') {
-    const other = document.getElementById('gol-other').value.trim();
-    const pick = selections.golkrali || other;
-    if (!pick) { showError('gol', 'Lütfen bir oyuncu seç veya yaz!'); return; }
-    rowData = { Zaman: ts, Kullanıcı: username, Kategori: 'Gol Kralı', Seçim: pick, Detay: numValues['gol-sayi'] + ' gol' };
-  } else if (type === 'skor') {
-    rowData = {
-      Zaman: ts, Kullanıcı: username, Kategori: 'Türkiye Skor',
-      Seçim: `Türkiye ${scoreValues['m1-home']} - ${scoreValues['m1-away']} ABD`,
-      Detay: '26 Haziran 2026'
+    const data = {
+      myUsername: document.getElementById('myUsername').value.trim(),
+      friendName: document.getElementById('friendName').value.trim(),
+      friendUsername: document.getElementById('friendUsername').value.trim(),
+      submittedAt: new Date().toISOString()
     };
-  }
 
-  // Modal metni oluştur
-  const modalLabels = {
-    'ana': '🏆 Şampiyon Tahmini',
-    'gruplar': '📊 Grup Liderleri',
-    'gol': '⚽ Gol Kralı',
-    'skor': '🇹🇷 Türkiye Skor'
-  };
-  const secimText = `<strong>${modalLabels[type] || type}</strong><br><span style="color:var(--gold)">${rowData.Seçim}</span>`;
-
-  modalAc(secimText, () => gondер(type, rowData));
-}
-
-async function gondер(type, rowData) {
-  document.getElementById('loading-' + type).classList.add('show');
-  document.querySelectorAll('.submit-btn').forEach(b => b.disabled = true);
-
-  const username = getUsername();
-
-  const params = new URLSearchParams({
-    kullanici: rowData.Kullanıcı,
-    kategori: rowData.Kategori,
-    secim: rowData.Seçim,
-    detay: rowData.Detay
-  });
-
-  // Daha önce katıldı mı kontrol et
-  const storageKey = 'dk2026_' + type + '_' + username.toLowerCase();
-  if (localStorage.getItem(storageKey)) {
-    showError(type, '⚠️ Bu yarışmaya zaten katıldın! Her yarışmaya sadece 1 kez katılabilirsin.');
-    document.getElementById('loading-' + type).classList.remove('show');
-    document.querySelectorAll('.submit-btn').forEach(b => b.disabled = false);
-    return;
-  }
-
-  fetch(APPS_SCRIPT_URL + '?' + params.toString(), {
-    method: 'GET',
-    mode: 'no-cors'
-  }).finally(() => {
-    localStorage.setItem(storageKey, '1');
-    document.getElementById('loading-' + type).classList.remove('show');
-    document.getElementById('success-' + type).classList.add('show');
-    document.querySelectorAll('.submit-btn').forEach(b => b.disabled = false);
-    setTimeout(() => document.getElementById('success-' + type).classList.remove('show'), 5000);
-  });
-}
-
-async function sorgulaKullanici() {
-  const kullanici = getUsername();
-  if (!kullanici) {
-    document.getElementById('sorgu-sonuc').innerHTML = '<div class="error-box show">Lütfen önce üstteki kullanıcı adı kutusunu doldur!</div>';
-    return;
-  }
-
-  document.getElementById('loading-sorgu').classList.add('show');
-  document.getElementById('sorgu-sonuc').innerHTML = '';
-
-  const sheetler = [
-    { ad: 'ŞAMPİYON', icon: '🏆', label: 'Turnuva Şampiyonu' },
-    { ad: 'GRUP LİDERLERİ', icon: '📊', label: 'Grup Liderleri' },
-    { ad: 'GOL KRALI', icon: '⚽', label: 'Gol Kralı' },
-    { ad: 'TÜRKİYE SKOR', icon: '🇹🇷', label: 'Türkiye Skor' }
-  ];
-
-  const sonuclar = [];
-
-  for (const sheet of sheetler) {
-    try {
-      const url = APPS_SCRIPT_URL + '?sorgu=1&sheet=' + encodeURIComponent(sheet.ad) + '&kullanici=' + encodeURIComponent(kullanici);
-      const res = await fetch(url, { method: 'GET' });
-      const data = await res.json();
-      sonuclar.push({ ...sheet, veri: data });
-    } catch(e) {
-      sonuclar.push({ ...sheet, veri: null });
+    if(!validate(data)){
+      showStatus('fail', 'Lütfen işaretli alanları doldurun.');
+      return;
     }
-  }
 
-  document.getElementById('loading-sorgu').classList.remove('show');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'GÖNDERİLİYOR...';
 
-  const bulunan = sonuclar.filter(s => s.veri);
-  if (bulunan.length === 0) {
-    document.getElementById('sorgu-sonuc').innerHTML = `
-      <div style="text-align:center;padding:24px;background:var(--bg3);border-radius:8px;color:var(--muted)">
-        <div style="font-size:32px;margin-bottom:8px">🔎</div>
-        <div style="font-size:14px"><strong style="color:var(--text)">${kullanici}</strong> adına kayıtlı tahmin bulunamadı.</div>
-      </div>`;
-    return;
-  }
-
-  let html = `<div style="background:rgba(0,208,132,.08);border:1px solid rgba(0,208,132,.3);border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--green)">
-    ✅ <strong>${kullanici}</strong> adına <strong>${bulunan.length}</strong> yarışmada tahmin bulundu.
-  </div>`;
-
-  for (const s of sonuclar) {
-    html += `<div style="background:var(--bg3);border-radius:8px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:flex-start;gap:12px">
-      <div style="font-size:22px;line-height:1;margin-top:2px">${s.icon}</div>
-      <div style="flex:1">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--white);margin-bottom:6px">${s.label}</div>`;
-    
-    if (s.veri) {
-      html += `<div style="font-size:13px;color:var(--text);background:var(--bg2);border-radius:4px;padding:8px 12px;margin-bottom:4px">
-        <span style="color:var(--muted)">Seçim:</span> <strong>${s.veri.secim}</strong>
-      </div>`;
-      if (s.veri.detay && s.veri.detay !== '-') {
-        html += `<div style="font-size:12px;color:var(--muted);padding:0 4px">${s.veri.detay}</div>`;
+    try{
+      if(SCRIPT_URL.indexOf('PASTE_') === 0){
+        throw new Error('CONFIG_MISSING');
       }
-      html += `<div style="font-size:11px;color:var(--muted);margin-top:4px;padding:0 4px">🕐 ${s.veri.zaman}</div>`;
-    } else {
-      html += `<div style="font-size:13px;color:var(--muted);font-style:italic">Henüz katılım yok</div>`;
+
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(data)
+      });
+
+      // no-cors modunda yanıt okunamaz, başarı varsayılır.
+      showStatus('success', '✓ Bilgilerin alındı! Arkadaşın ve bonusun ekibimiz tarafından en kısa sürede incelenip hesabına tanımlanacak.');
+      form.reset();
+
+    }catch(err){
+      if(err.message === 'CONFIG_MISSING'){
+        showStatus('fail', 'Form henüz bağlanmadı: SCRIPT_URL tanımlanmamış. (Bu mesajı sadece test sırasında görürsünüz.)');
+      } else {
+        showStatus('fail', 'Bir sorun oluştu, lütfen tekrar deneyin veya canlı destek ile iletişime geçin.');
+      }
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'GÖNDER';
     }
-    html += `</div></div>`;
-  }
-
-  document.getElementById('sorgu-sonuc').innerHTML = html;
-}
-
-
-const gruplar = [
-  { id:'A', takimlar:['Meksika','Güney Afrika','Güney Kore','Çekya'] },
-  { id:'B', takimlar:['Kanada','Bosna Hersek','Katar','İsviçre'] },
-  { id:'C', takimlar:['Brezilya','Fas','Haiti','İskoçya'] },
-  { id:'D', takimlar:['ABD','Paraguay','Avustralya','Türkiye'] },
-  { id:'E', takimlar:['Almanya','Curacao','Fildişi Sahili','Ekvador'] },
-  { id:'F', takimlar:['Hollanda','Japonya','İsveç','Tunus'] },
-  { id:'G', takimlar:['Belçika','Mısır','İran','Yeni Zelanda'] },
-  { id:'H', takimlar:['İspanya','Yeşil Burun Adaları','Suudi Arabistan','Uruguay'] },
-  { id:'I', takimlar:['Fransa','Senegal','Irak','Norveç'] },
-  { id:'J', takimlar:['Arjantin','Cezayir','Avusturya','Ürdün'] },
-  { id:'K', takimlar:['Portekiz','Kongo DR','Özbekistan','Kolombiya'] },
-  { id:'L', takimlar:['İngiltere','Hırvatistan','Gana','Panama'] },
-];
-
-const gf = document.getElementById('grup-fields');
-gruplar.forEach(g => {
-  const div = document.createElement('div');
-  div.className = 'form-group';
-  div.innerHTML = `
-    <label class="form-label">Grup ${g.id} Lideri</label>
-    <select class="form-input grup-select" data-grup="${g.id}">
-      <option value="">-- Seç --</option>
-      ${g.takimlar.map(t => `<option value="${t}">${t}</option>`).join('')}
-    </select>`;
-  gf.appendChild(div);
-});
+  });
 </script>
 </body>
 </html>
