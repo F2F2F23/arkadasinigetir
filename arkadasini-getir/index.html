@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arkadaşını Getir - Kalitebet</title>
+<style>
+  :root{
+    --bg-deep: #060916;
+    --bg-navy: #0c1230;
+    --card: #12183a;
+    --card-border: #232b58;
+    --gold: #f4b731;
+    --gold-soft: #ffd873;
+    --gold-dim: #b8860b;
+    --text: #eef0fb;
+    --text-dim: #9aa2c7;
+    --green: #33c17a;
+    --red: #ff5c6c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background: radial-gradient(ellipse at top, #101a44 0%, var(--bg-deep) 55%);
+    color: var(--text);
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    padding: 0 0 60px 0;
+  }
+  .page{
+    width:100%;
+    max-width: 480px;
+  }
+
+  /* Header bar, mimics site nav */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 20px;
+    background: #0a0f28;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .logo{
+    display:flex; align-items:center; gap:8px;
+    font-weight:800; font-size:20px; letter-spacing:0.5px;
+  }
+  .logo-icon{
+    width:30px; height:30px; border-radius:7px;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-dim));
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:900; color:#1a1204;
+  }
+  .logo span.brand{ color: var(--gold); }
+  .logo sup{ font-size:11px; color: var(--text-dim); font-weight:600; margin-left:2px;}
+
+  /* Hero */
+  .hero{
+    padding: 34px 24px 26px;
+    text-align:center;
+    background: linear-gradient(180deg, #0e1436 0%, var(--bg-navy) 100%);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .hero .eyebrow{
+    color: var(--gold);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom:10px;
+  }
+  .hero h1{
+    font-size: 28px;
+    font-weight:900;
+    line-height:1.2;
+    background: linear-gradient(135deg, #fff 30%, var(--gold-soft) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin-bottom: 10px;
+  }
+  .hero p{
+    color: var(--text-dim);
+    font-size:14.5px;
+    line-height:1.5;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .hero p strong{ color: var(--gold-soft); font-weight:700; }
+
+  /* Form card */
+  .form-wrap{ padding: 26px 20px 0; }
+  .card{
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 26px 22px 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+  .card h2{
+    font-size:16px;
+    font-weight:800;
+    margin-bottom: 4px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .card h2 .dot{
+    width:8px; height:8px; border-radius:50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+  }
+  .card .sub{
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .field{ margin-bottom: 16px; }
+  .field label{
+    display:block;
+    font-size: 12.5px;
+    font-weight:700;
+    color: var(--text-dim);
+    margin-bottom: 7px;
+    letter-spacing: 0.3px;
+  }
+  .field input{
+    width:100%;
+    background: #0a0f2a;
+    border: 1.5px solid var(--card-border);
+    border-radius: 10px;
+    padding: 13px 14px;
+    color: var(--text);
+    font-size: 15px;
+    outline:none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .field input::placeholder{ color: #565f8f; }
+  .field input:focus{
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(244,183,49,0.15);
+  }
+  .field.error input{ border-color: var(--red); }
+  .field .err-msg{
+    display:none;
+    color: var(--red);
+    font-size:12px;
+    margin-top:6px;
+  }
+  .field.error .err-msg{ display:block; }
+
+  .submit-btn{
+    width:100%;
+    margin-top: 6px;
+    padding: 15px;
+    border:none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold-dim));
+    color: #1a1204;
+    font-size: 15.5px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    cursor:pointer;
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    box-shadow: 0 8px 24px rgba(244,183,49,0.25);
+  }
+  .submit-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 28px rgba(244,183,49,0.35); }
+  .submit-btn:active{ transform: translateY(0); }
+  .submit-btn:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
+
+  .status{
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight:600;
+    display:none;
+    align-items:flex-start;
+    gap:8px;
+    line-height:1.45;
+  }
+  .status.show{ display:flex; }
+  .status.success{ background: rgba(51,193,122,0.12); border:1px solid rgba(51,193,122,0.4); color: var(--green); }
+  .status.fail{ background: rgba(255,92,108,0.12); border:1px solid rgba(255,92,108,0.4); color: var(--red); }
+
+  .terms{
+    padding: 22px 20px 0;
+  }
+  .terms details{
+    background: var(--card);
+    border:1px solid var(--card-border);
+    border-radius: 14px;
+    overflow:hidden;
+  }
+  .terms summary{
+    list-style:none;
+    padding: 15px 18px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color: var(--text);
+  }
+  .terms summary::-webkit-details-marker{ display:none; }
+  .terms summary::after{
+    content:'▾';
+    color: var(--gold);
+    font-size:14px;
+    transition: transform .15s ease;
+  }
+  .terms details[open] summary::after{ transform: rotate(180deg); }
+  .terms .terms-body{
+    padding: 0 18px 18px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height:1.6;
+  }
+  .terms .terms-body ul{ padding-left: 18px; margin-top:6px; }
+  .terms .terms-body li{ margin-bottom:5px; }
+
+  .footer-note{
+    text-align:center;
+    color: #4b5384;
+    font-size: 11.5px;
+    padding: 26px 20px 0;
+    line-height:1.6;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-icon">KB</div>
+      <div>Kalite<span class="brand">Bet</span><sup>9</sup></div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Arkadaşını Getir, Bonusunu Götür</div>
+    <h1>Getirdiğin arkadaşını<br>buradan bildir</h1>
+    <p>Kullanıcı adını ve getirdiğin arkadaşının bilgilerini gir, <strong>bonusun ekibimiz tarafından incelenip hesabına tanımlansın.</strong></p>
+  </div>
+
+  <div class="form-wrap">
+    <div class="card">
+      <h2><span class="dot"></span>Referans Bilgileri</h2>
+      <div class="sub">Tüm alanlar zorunludur.</div>
+
+      <form id="referralForm" novalidate>
+        <div class="field" id="field-me">
+          <label for="myUsername">Kullanıcı Adım</label>
+          <input type="text" id="myUsername" name="myUsername" placeholder="Kalitebet kullanıcı adınız" autocomplete="off">
+          <div class="err-msg">Lütfen kullanıcı adınızı girin.</div>
+        </div>
+
+        <div class="field" id="field-friend-name">
+          <label for="friendName">Arkadaşımın Adı</label>
+          <input type="text" id="friendName" name="friendName" placeholder="Arkadaşınızın adı soyadı" autocomplete="off">
+          <div class="err-msg">Lütfen arkadaşınızın adını girin.</div>
+        </div>
+
+        <div class="field" id="field-friend-username">
+          <label for="friendUsername">Arkadaşımın Kullanıcı Adı</label>
+          <input type="text" id="friendUsername" name="friendUsername" placeholder="Arkadaşınızın Kalitebet kullanıcı adı" autocomplete="off">
+          <div class="err-msg">Lütfen arkadaşınızın kullanıcı adını girin.</div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">GÖNDER</button>
+
+        <div class="status" id="statusBox"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="terms">
+    <details>
+      <summary>Promosyon Şartları ve Detayları</summary>
+      <div class="terms-body">
+        <ul>
+          <li>Bildirdiğiniz arkadaşınızın gerçek ve aktif bir üye olması gerekmektedir.</li>
+          <li>Bonus, ekibimiz tarafından bilgiler doğrulandıktan sonra hesabınıza tanımlanır.</li>
+          <li>Aynı üye birden fazla arkadaşını bildirebilir.</li>
+          <li>Yanlış veya hatalı bilgi girilmesi durumunda bonus tanımlanmayabilir.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <div class="footer-note">© Kalitebet — Arkadaşını Getir Bonusu</div>
+
+</div>
+
+<script>
+  // ---- CONFIGURATION ----
+  // Google Apps Script Web App URL buraya yapıştırılacak.
+  const SCRIPT_URL = "PASTE_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+  const form = document.getElementById('referralForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const statusBox = document.getElementById('statusBox');
+
+  function clearErrors(){
+    document.querySelectorAll('.field').forEach(f => f.classList.remove('error'));
+  }
+
+  function showStatus(type, msg){
+    statusBox.className = 'status show ' + type;
+    statusBox.innerHTML = msg;
+  }
+
+  function validate(data){
+    let valid = true;
+    if(!data.myUsername){
+      document.getElementById('field-me').classList.add('error');
+      valid = false;
+    }
+    if(!data.friendName){
+      document.getElementById('field-friend-name').classList.add('error');
+      valid = false;
+    }
+    if(!data.friendUsername){
+      document.getElementById('field-friend-username').classList.add('error');
+      valid = false;
+    }
+    return valid;
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    clearErrors();
+    statusBox.className = 'status';
+
+    const data = {
+      myUsername: document.getElementById('myUsername').value.trim(),
+      friendName: document.getElementById('friendName').value.trim(),
+      friendUsername: document.getElementById('friendUsername').value.trim(),
+      submittedAt: new Date().toISOString()
+    };
+
+    if(!validate(data)){
+      showStatus('fail', 'Lütfen işaretli alanları doldurun.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'GÖNDERİLİYOR...';
+
+    try{
+      if(SCRIPT_URL.indexOf('PASTE_') === 0){
+        throw new Error('CONFIG_MISSING');
+      }
+
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(data)
+      });
+
+      // no-cors modunda yanıt okunamaz, başarı varsayılır.
+      showStatus('success', '✓ Bilgilerin alındı! Arkadaşın ve bonusun ekibimiz tarafından en kısa sürede incelenip hesabına tanımlanacak.');
+      form.reset();
+
+    }catch(err){
+      if(err.message === 'CONFIG_MISSING'){
+        showStatus('fail', 'Form henüz bağlanmadı: SCRIPT_URL tanımlanmamış. (Bu mesajı sadece test sırasında görürsünüz.)');
+      } else {
+        showStatus('fail', 'Bir sorun oluştu, lütfen tekrar deneyin veya canlı destek ile iletişime geçin.');
+      }
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'GÖNDER';
+    }
+  });
+</script>
+</body>
+</html>
